@@ -19,7 +19,7 @@ public class Project {
 	private String projectName;
 	@NotBlank(message = "Project Identifier is required")
 	private String projectIdentifier;
-	@Size(min = 4,max = 5, message = "Please used 4 to 5 characters")
+	@Size(min = 4,max = 50, message = "Please used 4 to 5 characters")
 	@NotBlank(message = "Project Description is required")
 	private String description;
 	@JsonFormat(pattern = "yyyy-mm-dd")
