@@ -9,17 +9,18 @@ import io.SpringBootReatProject.ppmtool.repositories.ProjectRepository;
 
 @Service
 public class ProjectService {
-	
-	@Autowired
-	private ProjectRepository projectRepository;
 
-	public Project saveOrUpdateProject(Project project) {
-		
-		try {
-			project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
-			return projectRepository.save(project);
-		} catch(Exception e) {
-			throw new ProjectIdException("Project ID '"+ project.getProjectIdentifier().toUpperCase()+"' already exists");
-		}
-	}
+    @Autowired
+    private ProjectRepository projectRepository;
+
+    public Project saveOrUpdateProject(Project project){
+        try{
+            project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            return projectRepository.save(project);
+        }catch (Exception e){
+            throw new ProjectIdException("Project ID '"+project.getProjectIdentifier().toUpperCase()+"' already exists");
+        }
+
+    }
+
 }
