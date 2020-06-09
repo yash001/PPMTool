@@ -1,8 +1,5 @@
 package io.SpringBootReatProject.ppmtool.domain;
 
-import javax.persistence.Entity;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -21,7 +18,7 @@ public class Project {
     private String projectName;
     @NotBlank(message ="Project Identifier is required")
     @Size(min=4, max=5, message = "Please use 4 to 5 characters")
-    @Column(updatable = false, unique = true)
+    @Column(updatable = false, unique = true, length = 32)
     private String projectIdentifier;
     @NotBlank(message = "Project description is required")
     private String description;
@@ -33,7 +30,11 @@ public class Project {
     private Date created_At;
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updated_At;
-
+    
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
+    //
+    private Backlog backlog;
+    
     public Project() {
     }
 
@@ -110,5 +111,13 @@ public class Project {
     protected void onUpdate(){
         this.updated_At = new Date();
     }
+
+	public Backlog getBacklog() {
+		return backlog;
+	}
+
+	public void setBacklog(Backlog backlog) {
+		this.backlog = backlog;
+	}
 
 }
