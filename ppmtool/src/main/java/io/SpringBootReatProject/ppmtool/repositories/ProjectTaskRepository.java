@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import io.SpringBootReatProject.ppmtool.domain.ProjectTask;
 
-@Repository
-public interface ProjectTaskRepository extends CrudRepository<ProjectTask,Long> {
-
+@Repository 
+public interface ProjectTaskRepository extends CrudRepository<ProjectTask, Long> {
 }
