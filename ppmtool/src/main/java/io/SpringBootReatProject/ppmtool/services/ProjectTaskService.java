@@ -1,6 +1,7 @@
 package io.SpringBootReatProject.ppmtool.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import io.SpringBootReatProject.ppmtool.domain.Backlog;
@@ -51,4 +52,10 @@ public class ProjectTaskService {
 
         return projectTaskRepository.save(projectTask);
     }
+
+
+	public Iterable<ProjectTask> findBacklogById(String id) {
+	
+		return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
+	}
 }

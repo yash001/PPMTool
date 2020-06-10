@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import javax.validation.Valid;
 import javax.xml.ws.Response;
 
@@ -37,5 +39,11 @@ public class BacklogController {
 
     }
 
+    @GetMapping("/{backlog_id}") 
+    public Iterable<ProjectTask> getProjectBacklog(@PathVariable String backlog_id) {
+		
+    	return  projectTaskService.findBacklogById(backlog_id);
+    	
+    }
 
 }
