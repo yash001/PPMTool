@@ -2,6 +2,7 @@ package io.SpringBootReatProject.ppmtool.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import io.SpringBootReatProject.ppmtool.domain.Backlog;
 import io.SpringBootReatProject.ppmtool.domain.Project;
@@ -71,5 +72,10 @@ public class ProjectTaskService {
 		}
 		
 		return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
+	}
+	
+	public ProjectTask findPTByProjectSequence(@PathVariable String backlog_id ,@PathVariable String sequence) {
+		//make sure we are searching on the right backlog
+		return projectTaskRepository.findByProjectSequence(sequence);
 	}
 }
