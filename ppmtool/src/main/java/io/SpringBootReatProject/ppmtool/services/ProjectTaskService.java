@@ -1,12 +1,14 @@
 package io.SpringBootReatProject.ppmtool.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import io.SpringBootReatProject.ppmtool.domain.Backlog;
+import io.SpringBootReatProject.ppmtool.domain.Project;
 import io.SpringBootReatProject.ppmtool.domain.ProjectTask;
+import io.SpringBootReatProject.ppmtool.exceptions.ProjectNotFoundException;
 import io.SpringBootReatProject.ppmtool.repositories.BacklogRepository;
+import io.SpringBootReatProject.ppmtool.repositories.ProjectRepository;
 import io.SpringBootReatProject.ppmtool.repositories.ProjectTaskRepository;
 
 @Service
@@ -19,12 +21,15 @@ public class ProjectTaskService {
     @Autowired
     private ProjectTaskRepository projectTaskRepository;
 
+    @Autowired
+    private ProjectRepository projectRepository;
 
     public ProjectTask addProjectTask(String projectIdentifier, ProjectTask projectTask){
 
         //Exceptions: Project not found
-
-        //PTs to be added to a specific project, project != null, BL exists
+    	try{
+    	
+    	//PTs to be added to a specific project, project != null, BL exists
         Backlog backlog = backlogRepository.findByProjectIdentifier(projectIdentifier);
         //set the bl to pt
         projectTask.setBacklog(backlog);
@@ -50,12 +55,21 @@ public class ProjectTaskService {
             projectTask.setPriority(3);
         }
 
+    	}catch (Exception e) {
+    		throw new ProjectNotFoundException("Project not found");
+    	}
         return projectTaskRepository.save(projectTask);
     }
 
 
 	public Iterable<ProjectTask> findBacklogById(String id) {
-	
+		
+		Project project = projectRepository.findByProjectIdentifier(id);
+		
+		if(project == null) {
+			throw new ProjectNotFoundException("Project with ID: '" +id + "' does not exists");
+		}
+		
 		return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
 	}
 }
