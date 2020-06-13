@@ -1,4 +1,4 @@
- package io.SpringBootReatProject.ppmtool.repositories;
+package io.SpringBootReatProject.ppmtool.repositories;
 
 import io.SpringBootReatProject.ppmtool.domain.Backlog;
 import org.springframework.data.repository.CrudRepository;
