@@ -1,9 +1,4 @@
 package io.SpringBootReatProject.ppmtool.services;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import io.SpringBootReatProject.ppmtool.domain.Backlog;
 import io.SpringBootReatProject.ppmtool.domain.Project;
 import io.SpringBootReatProject.ppmtool.domain.ProjectTask;
@@ -11,6 +6,9 @@ import io.SpringBootReatProject.ppmtool.exceptions.ProjectNotFoundException;
 import io.SpringBootReatProject.ppmtool.repositories.BacklogRepository;
 import io.SpringBootReatProject.ppmtool.repositories.ProjectRepository;
 import io.SpringBootReatProject.ppmtool.repositories.ProjectTaskRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class ProjectTaskService {
@@ -97,4 +95,19 @@ public class ProjectTaskService {
 
         return projectTask;
     }
+
+    public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlog_id, String pt_id){
+        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id);
+
+        projectTask = updatedTask;
+
+        return projectTaskRepository.save(projectTask);
+    }
+    //Update project task
+
+    //find existing project task
+
+    //replace it with updated task
+
+    //save update
 }
