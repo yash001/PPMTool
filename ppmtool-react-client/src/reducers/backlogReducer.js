@@ -6,28 +6,28 @@ import {
 
 const initialState = {
   project_tasks: [],
-  project_task: {},
+  project_task: {}
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case GET_BACKLOG:
       return {
         ...state,
-        project_tasks: action.payload,
+        project_tasks: action.payload
       };
 
     case GET_PROJECT_TASK:
       return {
         ...state,
-        project_task: action.payload,
+        project_task: action.payload
       };
 
     case DELETE_PROJECT_TASK:
       return {
-        ...state,
+        ...state
 
-        // new code should be written here
+        // TO_DO
       };
 
     default:
