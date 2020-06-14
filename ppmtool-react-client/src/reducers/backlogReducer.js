@@ -27,7 +27,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
 
-        // TO_DO
+        // new code should be written here
       };
 
     default:
