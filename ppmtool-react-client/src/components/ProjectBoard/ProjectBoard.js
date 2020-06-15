@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 class ProjectBoard extends Component {
   render() {
     const { id } = this.props.match.params;
@@ -11,7 +12,7 @@ class ProjectBoard extends Component {
         <br />
         <hr />
         {
-          //  <!-- Backlog STARTS HERE -->
+          // <!-- Backlog STARTS HERE -->
         }
         <div className="container">
           <div className="row">
@@ -21,7 +22,6 @@ class ProjectBoard extends Component {
                   <h3>TO DO</h3>
                 </div>
               </div>
-
               {
                 // <!-- SAMPLE PROJECT TASK STARTS HERE -->
               }
@@ -34,13 +34,14 @@ class ProjectBoard extends Component {
                   <p className="card-text text-truncate ">
                     project_task.acceptanceCriteria
                   </p>
-                  <a href="#" className="btn btn-primary">
+                  <a href="" className="btn btn-primary">
                     View / Update
                   </a>
 
                   <button className="btn btn-danger ml-4">Delete</button>
                 </div>
               </div>
+
               {
                 // <!-- SAMPLE PROJECT TASK ENDS HERE -->
               }
@@ -52,8 +53,8 @@ class ProjectBoard extends Component {
                 </div>
               </div>
               {
-                // <!-- SAMPLE PROJECT TASK STARTS HERE -->
-                // <!-- SAMPLE PROJECT TASK ENDS HERE -->
+                //  <!-- SAMPLE PROJECT TASK STARTS HERE -->
+                //         <!-- SAMPLE PROJECT TASK ENDS HERE -->
               }
             </div>
             <div className="col-md-4">
