@@ -10,7 +10,7 @@ class ProjectBoard extends Component {
   constructor() {
     super();
     this.state = {
-      errors: {},
+      errors: {}
     };
   }
 
@@ -70,12 +70,15 @@ class ProjectBoard extends Component {
 ProjectBoard.propTypes = {
   backlog: PropTypes.object.isRequired,
   getBacklog: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   backlog: state.backlog,
-  errors: state.errors,
+  errors: state.errors
 });
 
-export default connect(mapStateToProps, { getBacklog })(ProjectBoard);
+export default connect(
+  mapStateToProps,
+  { getBacklog }
+)(ProjectBoard);
