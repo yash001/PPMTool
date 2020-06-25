@@ -1,4 +1,4 @@
-package io.agileintelligence.ppmtool.domain;
+package io.SpringBootReatProject.ppmtool.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
