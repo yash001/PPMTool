@@ -1,6 +1,6 @@
-package io.agileintelligence.ppmtool.repositories;
+package io.SpringBootReatProject.ppmtool.repositories;
 
-import io.agileintelligence.ppmtool.domain.User;
+import io.SpringBootReatProject.ppmtool.domain.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

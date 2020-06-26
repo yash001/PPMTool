@@ -1,7 +1,7 @@
-package io.agileintelligence.ppmtool.services;
+package io.SpringBootReatProject.ppmtool.services;
 
 
-import io.agileintelligence.ppmtool.repositories.UserRepository;
+import io.SpringBootReatProject.ppmtool.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
