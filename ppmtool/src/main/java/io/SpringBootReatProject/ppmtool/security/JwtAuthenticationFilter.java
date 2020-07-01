@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 
-import static io.agileintelligence.ppmtool.security.SecurityConstants.HEADER_STRING;
-import static io.agileintelligence.ppmtool.security.SecurityConstants.TOKEN_PREFIX;
+import static io.SpringBootReatProject.ppmtool.security.SecurityConstants.HEADER_STRING;
+import static io.SpringBootReatProject.ppmtool.security.SecurityConstants.TOKEN_PREFIX;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
