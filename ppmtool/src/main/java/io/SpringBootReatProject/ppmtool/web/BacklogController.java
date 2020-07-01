@@ -1,4 +1,5 @@
 package io.SpringBootReatProject.ppmtool.web;
+
 import io.SpringBootReatProject.ppmtool.domain.ProjectTask;
 import io.SpringBootReatProject.ppmtool.services.MapValidationErrorService;
 import io.SpringBootReatProject.ppmtool.services.ProjectTaskService;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import javax.xml.ws.Response;
+
 @RestController
 @RequestMapping("/api/backlog")
 @CrossOrigin
