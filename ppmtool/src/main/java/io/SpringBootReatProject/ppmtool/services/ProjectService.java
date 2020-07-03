@@ -2,13 +2,13 @@ package io.SpringBootReatProject.ppmtool.services;
 
 import io.SpringBootReatProject.ppmtool.domain.Backlog;
 import io.SpringBootReatProject.ppmtool.domain.Project;
+import io.SpringBootReatProject.ppmtool.domain.User;
 import io.SpringBootReatProject.ppmtool.exceptions.ProjectIdException;
 import io.SpringBootReatProject.ppmtool.exceptions.ProjectNotFoundException;
 import io.SpringBootReatProject.ppmtool.repositories.BacklogRepository;
 import io.SpringBootReatProject.ppmtool.repositories.ProjectRepository;
 import io.SpringBootReatProject.ppmtool.repositories.UserRepository;
 
-import io.SpringBootReatProject.ppmtool.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,18 @@ public class ProjectService {
     private UserRepository userRepository;
 
     public Project saveOrUpdateProject(Project project, String username){
+
+        if(project.getId() != null){
+            Project existingProject = projectRepository.findByProjectIdentifier(project.getProjectIdentifier());
+            if(existingProject !=null &&(!existingProject.getProjectLeader().equals(username))){
+                throw new ProjectNotFoundException("Project not found in your account");
+            }else if(existingProject == null){
+                throw new ProjectNotFoundException("Project with ID: '"+project.getProjectIdentifier()+"' cannot be updated because it doesn't exist");
+            }
+        }
+
         try{
+
             User user = userRepository.findByUsername(username);
             project.setUser(user);
             project.setProjectLeader(user.getUsername());
